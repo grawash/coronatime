@@ -6,7 +6,11 @@ module.exports = {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'vials': "url('/public/images/Rectangle 1.jpg')",
+      }
+    },
   },
   plugins: [],
 }
