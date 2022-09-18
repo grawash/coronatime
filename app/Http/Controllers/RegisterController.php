@@ -19,6 +19,6 @@ class RegisterController extends Controller
 		$attributtes = $request->validated();
 		$attributtes['password'] = bcrypt($attributtes['password']);
 		User::create($attributtes);
-		return redirect('register');
+		return redirect('/');
 	}
 }

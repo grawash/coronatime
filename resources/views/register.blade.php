@@ -6,7 +6,7 @@
                     <x-form.input name="username" placeholder="Enter unique username" required />
                     <x-form.input name="email" type="email" placeholder="Enter your email" required />
                     <x-form.input name="password" type="password" placeholder="Fill in password" required />
-                    <x-form.input name="password" type="password" placeholder="Repeat password" required />
+                    <x-form.input name="password_confirmation" type="password" placeholder="Repeat password" required />
 
                     <button type="submit" class="bg-green-500 capitalize hover:bg-green-600 mt-6 w-full h-14 text-white text-base font-[900] rounded-md">Sign up</button>
 
