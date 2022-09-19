@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Route::controller(RegisterController::class)->group(function () {
 	Route::get('register', 'index')->middleware('guest')->name('register.index');
-	Route::post('register/create', 'store')->middleware('guest')->name('user.store');
+	Route::post('register', 'register')->middleware('guest')->name('user.register');
 });
 
 Route::controller(LoginController::class)->group(function () {

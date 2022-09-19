@@ -14,7 +14,7 @@ class RegisterController extends Controller
 		return view('register');
 	}
 
-	public function store(StoreUserRequest $request): RedirectResponse
+	public function register(StoreUserRequest $request): RedirectResponse
 	{
 		User::create($request->validated());
 		return redirect('/');
