@@ -36,4 +36,10 @@ class LoginController extends Controller
 			'email' => 'Your provided credentials could not be verified.',
 		]);
 	}
+
+	public function logout(): RedirectResponse
+	{
+		auth()->logout();
+		return redirect('login');
+	}
 }
