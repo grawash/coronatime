@@ -19,12 +19,13 @@ Route::get('/', function () {
 	return view('landing');
 })->middleware('auth');
 
-Route::get('register', [RegisterController::class, 'index'])->middleware('guest')->name('register.index');
+Route::controller(RegisterController::class)->group(function () {
+	Route::get('register', 'index')->middleware('guest')->name('register.index');
+	Route::post('register/create', 'store')->middleware('guest')->name('user.store');
+});
 
-Route::post('register/create', [RegisterController::class, 'store'])->middleware('guest')->name('user.store');
-
-Route::get('login', [LoginController::class, 'index'])->middleware('guest')->name('login.index');
-
-Route::post('login', [LoginController::class, 'login'])->middleware('guest')->name('login');
-
-Route::post('logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
+Route::controller(LoginController::class)->group(function () {
+	Route::get('login', 'index')->middleware('guest')->name('login.index');
+	Route::post('login', 'login')->middleware('guest')->name('login');
+	Route::post('logout', 'logout')->middleware('auth')->name('logout');
+});
