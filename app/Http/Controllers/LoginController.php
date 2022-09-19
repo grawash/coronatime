@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginPostRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
@@ -14,26 +14,17 @@ class LoginController extends Controller
 		return view('login');
 	}
 
-	public function login(): RedirectResponse
+	public function login(LoginPostRequest $request): RedirectResponse
 	{
-		$attributes = request()->validate([
-			'username'       => 'required',
-			'password'       => 'required',
-		]);
-
-		if (Auth::attempt(['username' => $attributes['username'], 'password' => $attributes['password']]))
+		$fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+		$request->merge([$fieldType => $request->username]);
+		if (auth()->attempt([$fieldType => $request->$fieldType, 'password' => $request->password]))
 		{
 			session()->regenerate();
 			return redirect('/');
 		}
-		elseif (Auth::attempt(['email'=> $attributes['username'], 'password' => $attributes['password']]))
-		{
-			session()->regenerate();
-			return redirect('/');
-		}
-
 		throw ValidationException::withMessages([
-			'email' => 'Your provided credentials could not be verified.',
+			'username' => 'Your provided credentials could not be verified.',
 		]);
 	}
 

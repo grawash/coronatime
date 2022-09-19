@@ -16,9 +16,7 @@ class RegisterController extends Controller
 
 	public function store(StoreUserRequest $request): RedirectResponse
 	{
-		$attributtes = $request->validated();
-		$attributtes['password'] = bcrypt($attributtes['password']);
-		User::create($attributtes);
+		User::create($request->validated());
 		return redirect('/');
 	}
 }
