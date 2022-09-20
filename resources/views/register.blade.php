@@ -1,5 +1,5 @@
 <x-user-layout>
-                <form method="POST" action="/register/create" class="mt-16">
+                <form method="POST" action="/register" class="mt-16">
                     @csrf
                     <h1 class="text-2xl font-[1000]">Welcome to Coronatime</h1>
                     <p class="text-neutral-600 text-xl mt-4">Please enter required info to sign up</p>
