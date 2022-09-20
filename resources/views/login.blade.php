@@ -1,9 +1,10 @@
 <x-user-layout>
     <form method="POST" action="login" class="mt-16">
+        @csrf
         <h1 class="text-2xl font-[1000]">Welcome Back</h1>
         <p class="text-neutral-600 text-xl mt-4">Welcome back! Please enet your details</p>
-        <x-form.input name="Username" placeholder="Enter unique username or email" required />
-        <x-form.input name="Password" placeholder="Fill in password" required />
+        <x-form.input name="username" type="text" placeholder="Enter unique username or email" required />
+        <x-form.input name="password" type="password" placeholder="Fill in password" required />
         <div class="flex mt-6 items-center">
             <input type="checkbox" id='remember'>
             <label for="remember" class="pl-2 font-semibold text-sm">Remember this device</label>

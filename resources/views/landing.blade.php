@@ -5,8 +5,11 @@
                 <img src="./images/Group 1.svg" alt="">
                 <div class="flex ml-auto">
                     <button>select</button>
-                    <p class="ml-4">Takeshi K.</p>
-                    <a href="" class="border-l pl-2 ml-2">Log out</a>
+                    <p class="ml-4">{{ auth()->user()->username }}</p>
+                    <form id="logout-form" method="POST" action="/logout">
+                        @csrf
+                        <button type="submit" class="border-l pl-2 ml-2">Log out</button>
+                    </form>
                 </div>
             </div>
         </div>
