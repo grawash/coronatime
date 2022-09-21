@@ -58,6 +58,9 @@
             #text{
                 font-size: 16px;
             }
+            #verifyBtn{
+            width: 90%;
+            }
         }
     </style>
     <div class="container">
