@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 	return view('landing');
-})->middleware('auth');
+})->middleware('auth', 'verified');
 
 Route::controller(RegisterController::class)->group(function () {
 	Route::get('register', 'index')->middleware('guest')->name('register.index');
