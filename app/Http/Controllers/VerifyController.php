@@ -2,28 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\VerifyRequest;
 use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\RedirectResponse;
 
-class VerificationController extends Controller
+class VerifyController extends Controller
 {
 	public function index(): View
 	{
-		auth()->logout();
 		return view('verify-email');
 	}
 
-	public function verified(): View
+	public function verify(EmailVerificationRequest $request): RedirectResponse
 	{
-		return view('verified');
-	}
-
-	public function verify(VerifyRequest $request): RedirectResponse
-	{
+		dd($request);
 		$user = User::find($request->route('id'));
 
 		if (!hash_equals((string) $request->route('hash'), sha1($user->getEmailForVerification())))
@@ -36,6 +31,6 @@ class VerificationController extends Controller
 			event(new Verified($user));
 		}
 
-		return redirect('verified')->with('verified', true);
+		return redirect($this->redirectPath())->with('verified', true);
 	}
 }
