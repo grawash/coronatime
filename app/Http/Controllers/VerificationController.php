@@ -13,6 +13,7 @@ class VerificationController extends Controller
 {
 	public function index(): View
 	{
+		auth()->logout();
 		return view('verify-email');
 	}
 
