@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 	return view('landing');
-})->middleware('auth');
+})->middleware('auth', 'verified');
 
 Route::controller(RegisterController::class)->group(function () {
 	Route::get('register', 'index')->middleware('guest')->name('register.index');
@@ -29,3 +30,9 @@ Route::controller(LoginController::class)->group(function () {
 	Route::post('login', 'login')->middleware('guest')->name('login');
 	Route::post('logout', 'logout')->middleware('auth')->name('logout');
 });
+
+Route::get('/email/verify', [VerificationController::class, 'index'])->middleware('auth')->name('verification.notice');
+
+Route::get('/verified', [VerificationController::class, 'verified'])->middleware('guest')->name('verified.notice');
+
+Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
