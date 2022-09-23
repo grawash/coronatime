@@ -36,3 +36,7 @@ Route::get('/email/verify', [VerificationController::class, 'index'])->middlewar
 Route::get('/verified', [VerificationController::class, 'verified'])->middleware('guest')->name('verified.notice');
 
 Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
+
+Route::get('/forgot-password', function () {
+	return view('forgot-password');
+})->middleware('guest')->name('password.request');
