@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\VerificationController;
@@ -55,6 +58,31 @@ Route::post('/forgot-password', function (Request $request) {
 				: back()->withErrors(['email' => __($status)]);
 })->middleware('guest')->name('password.email');
 
-Route::get('/reset-password/{token}', function ($token) {
-	return view('reset-password', ['token' => $token]);
+Route::get('/reset-password/{token}', function ($token, Request $request) {
+	return view('reset-password', ['token' => $token, 'email' => $request->email]);
 })->middleware('guest')->name('password.reset');
+
+Route::post('/reset-password', function (Request $request) {
+	$request->validate([
+		'token'    => 'required',
+		'email'    => 'required|email',
+		'password' => 'required|confirmed',
+	]);
+
+	$status = Password::reset(
+		$request->only('email', 'password', 'password_confirmation', 'token'),
+		function ($user, $password) {
+			$user->forceFill([
+				'password' => $password, //Hash::make($password),
+			])->setRememberToken(Str::random(60));
+
+			$user->save();
+
+			event(new PasswordReset($user));
+		}
+	);
+
+	return $status === Password::PASSWORD_RESET
+				? redirect()->route('login')->with('status', __($status))
+				: back()->withErrors(['email' => [__($status)]]);
+})->middleware('guest')->name('password.update');
