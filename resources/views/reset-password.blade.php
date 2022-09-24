@@ -7,9 +7,9 @@
                 @csrf
                 <input type="hidden" name="email" value="{{$email}}" required>
                 <x-form.input name="password" type="password" placeholder="Enter your email" required />
-                <x-form.input name="password_confirmation" type="password" placeholder="Enter your email" required />
+                <x-form.input name="password_confirmation" type="password" placeholder="Repeat password" required />
                 <input type="hidden" name="token" value="{{$token}}" required>
-                <button type="submit" class="bg-green-500 hover:bg-green-600 mt-14 w-full h-14 text-white text-base font-[900] rounded-md">RESET PASSWORD</button>
+                <button type="submit" class="bg-green-500 hover:bg-green-600 mt-14 w-full h-14 text-white text-base font-[900] rounded-md">SAVE CHANGES</button>
             </form>
         </div>  
     </div>
