@@ -8,11 +8,11 @@
         <div class="flex mt-6 items-center">
             <input type="checkbox" id='remember'>
             <label for="remember" class="pl-2 font-semibold text-sm">Remember this device</label>
-            <a href="./forgot-password" class="ml-auto text-blue-700 font-semibold text-sm">Forgot password?</a>
+            <a href="{{ route('password.request') }}" class="ml-auto text-blue-700 font-semibold text-sm">Forgot password?</a>
         </div>
         <button type="submit" class="bg-green-500 hover:bg-green-600 mt-6 w-full h-14 text-white text-base font-[900] rounded-md">Log in</button>
         <div class="flex mt-6 items-center justify-center">
-            <p class="text-base text-neutral-600">Don't have an account? <a href="./register" class="font-semibold text-black">Sign up for free</a></p>
+            <p class="text-base text-neutral-600">Don't have an account? <a href="{{ route('register.index') }}" class="font-semibold text-black">Sign up for free</a></p>
             
         </div>
     </form>

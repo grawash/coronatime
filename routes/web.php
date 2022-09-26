@@ -37,11 +37,12 @@ Route::controller(VerificationController::class)->group(function () {
 	Route::get('/verified', 'verified')->middleware('guest')->name('verified.notice');
 	Route::get('/email/verify/{id}/{hash}', 'verify')->name('verification.verify');
 });
-
-Route::controller(ResetPasswordController::class)->group(function () {
-	Route::get('/forgot-password', 'index')->middleware('guest')->name('password.request');
-	Route::post('/forgot-password', 'email')->middleware('guest')->name('password.email');
-	Route::get('/reset-password/{token}', 'reset')->middleware('guest')->name('password.reset');
-	Route::post('/reset-password', 'update')->middleware('guest')->name('password.update');
+Route::group(['middleware' => 'guest'], function () {
+	Route::controller(ResetPasswordController::class)->group(function () {
+		Route::get('/forgot-password', 'index')->name('password.request');
+		Route::post('/forgot-password', 'email')->name('password.email');
+		Route::get('/reset-password/{token}', 'reset')->name('password.reset');
+		Route::post('/reset-password', 'update')->name('password.update');
+	});
+	Route::view('password-reset', 'reset')->name('reset.login');
 });
-Route::view('password-reset', 'reset')->middleware('guest')->name('reset.login');
