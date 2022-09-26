@@ -1,5 +1,5 @@
 <x-user-layout>
-    <form method="POST" action="login" class="mt-16">
+    <form method="POST" action="{{ route('login') }}" class="mt-16">
         @csrf
         <h1 class="text-2xl font-[1000]">Welcome Back</h1>
         <p class="text-neutral-600 text-xl mt-4">Welcome back! Please enet your details</p>

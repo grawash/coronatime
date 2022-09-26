@@ -3,7 +3,7 @@
         <img src="{{ url('./images/Group 1.svg') }}" alt="" class="mt-10 ml-auto mr-auto">
         <div class="flex flex-col w-max mt-40">
             <h1 class="font-[900] text-2xl ml-auto mr-auto">Reset Password</h1>
-            <form method="POST" action="/reset-password" class="mt-14">
+            <form method="POST" action="{{ route('password.update') }}" class="mt-14">
                 @csrf
                 <input type="hidden" name="email" value="{{$email}}" required>
                 <x-form.input name="password" type="password" placeholder="Enter your email" required />
