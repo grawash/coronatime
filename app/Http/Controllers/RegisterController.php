@@ -19,6 +19,7 @@ class RegisterController extends Controller
 	{
 		$user = User::create($request->validated());
 		event(new Registered($user));
+		auth()->login($user);
 		return redirect()->route('verification.notice');
 	}
 }

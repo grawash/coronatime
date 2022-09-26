@@ -6,7 +6,7 @@
                 <div class="flex ml-auto">
                     <button>select</button>
                     <p class="ml-4">{{ auth()->user()->username }}</p>
-                    <form id="logout-form" method="POST" action="/logout">
+                    <form id="logout-form" method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="border-l pl-2 ml-2">Log out</button>
                     </form>
