@@ -18,7 +18,7 @@
                 <h1 class="font-extrabold text-2xl">Worldwide statistics</h1>
                 <div class="mt-10">
                     <a href="" class="mr-20 font-bold border-b-4 border-black pb-4">Worldwide</a>
-                    <a href="">By country</a>
+                    <a href="{{ route('countries.stats') }}">By country</a>
                 </div>
                 <div class="flex mt-10 gap-x-6 grow">
                     <x-stat-card class="bg-blue-600">

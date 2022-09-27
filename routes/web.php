@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetPasswordController;
@@ -19,7 +20,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 	return view('landing');
-})->middleware('auth', 'verified');
+})->middleware('auth', 'verified')->name('landing.stats');
+
+Route::get('countries-statistics', [LandingController::class, 'stats'])->middleware('auth')->name('countries.stats');
 
 Route::controller(RegisterController::class)->group(function () {
 	Route::get('register', 'index')->middleware('guest')->name('register.index');
