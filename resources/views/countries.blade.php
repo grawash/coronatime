@@ -17,10 +17,10 @@
             <div class="ml-28 mr-28 mt-10 grow flex flex-col">
                 <h1 class="font-extrabold text-2xl">Worldwide statistics</h1>
                 <div class="mt-10">
-                    <a href="">Worldwide</a>
-                    <a href="" class="mr-20 font-bold border-b-4 border-black pb-4">By country</a>
+                    <a href="{{ route('landing.stats') }}">Worldwide</a>
+                    <a href="" class="ml-20 font-bold border-b-4 border-black pb-4">By country</a>
                 </div>
-                <div class="flex mt-10 gap-x-6 grow">
+                <div class="flex flex-col mt-10 gap-x-6 grow">
                     @foreach ($countries as $country)
                         <p>{{ $country['code'] }}</p>
                     @endforeach
