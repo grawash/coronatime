@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Stats;
+use App\Models\Statistics;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Console\Command;
 
@@ -13,7 +13,7 @@ class FetchCountriesStatistic extends Command
 	 *
 	 * @var string
 	 */
-	protected $signature = 'fetch:stats';
+	protected $signature = 'FetchCountriesStatistic';
 
 	/**
 	 * The console command description.
@@ -29,19 +29,18 @@ class FetchCountriesStatistic extends Command
 	 */
 	public function handle()
 	{
-		$response = Http::get('https://devtest.ge/countries')->json();
-		$data = [];
-		foreach ($response as $country)
+		$countries = Http::get('https://devtest.ge/countries')->json();
+		foreach ($countries as $country)
 		{
-			$stats = Http::post('https://devtest.ge/get-country-statistics', [
+			$statistics = Http::post('https://devtest.ge/get-country-statistics', [
 				'code' => $country['code'],
 			])->json();
-			Stats::create([
+			Statistics::create([
 				'country'   => json_encode($country['name']),
-				'code'      => $stats['code'],
-				'confirmed' => $stats['confirmed'],
-				'recovered' => $stats['recovered'],
-				'death'     => $stats['deaths'],
+				'code'      => $statistics['code'],
+				'confirmed' => $statistics['confirmed'],
+				'recovered' => $statistics['recovered'],
+				'death'     => $statistics['deaths'],
 			]);
 		}
 	}
