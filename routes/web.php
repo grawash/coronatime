@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\DisplayStatisticController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,9 +19,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-	return view('landing');
-})->middleware('auth', 'verified');
+Route::controller(StatisticController::class)->group(function () {
+	Route::get('/', 'index')->middleware('auth', 'verified')->name('landing.stats');
+	Route::get('countries-statistics', 'stats')->middleware('auth')->name('countries.stats');
+});
 
 Route::controller(RegisterController::class)->group(function () {
 	Route::get('register', 'index')->middleware('guest')->name('register.index');
