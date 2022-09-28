@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Statistics;
+use App\Models\Statistic;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Console\Command;
 
@@ -35,7 +35,7 @@ class FetchCountriesStatistic extends Command
 			$statistics = Http::post('https://devtest.ge/get-country-statistics', [
 				'code' => $country['code'],
 			])->json();
-			Statistics::create([
+			Statistic::create([
 				'country'   => json_encode($country['name']),
 				'code'      => $statistics['code'],
 				'confirmed' => $statistics['confirmed'],
