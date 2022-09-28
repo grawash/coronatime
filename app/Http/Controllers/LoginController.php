@@ -21,7 +21,7 @@ class LoginController extends Controller
 		if (auth()->attempt([$fieldType => $request->$fieldType, 'password' => $request->password]))
 		{
 			session()->regenerate();
-			return redirect('/');
+			return redirect()->route('landing.stats');
 		}
 		throw ValidationException::withMessages([
 			'username' => 'Your provided credentials could not be verified.',

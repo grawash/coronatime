@@ -1,32 +1,23 @@
-<x-layout>
-    <div class="flex flex-col h-screen">
-        <div class="grow basis-0 border-b border-neutral-100">
-            <div class="flex items-center h-full pl-28 pr-28">
-                <img src="./images/Group 1.svg" alt="">
-                <div class="flex ml-auto">
-                    <button>select</button>
-                    <p class="ml-4">{{ auth()->user()->username }}</p>
-                    <form id="logout-form" method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit" class="border-l pl-2 ml-2">Log out</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="grow-[10] basis-0 bg-neutral-50 flex flex-col">
-            <div class="ml-28 mr-28 mt-10 grow flex flex-col">
-                <h1 class="font-extrabold text-2xl">Worldwide statistics</h1>
-                <div class="mt-10">
-                    <a href="{{ route('landing.stats') }}">Worldwide</a>
-                    <a href="" class="ml-20 font-bold border-b-4 border-black pb-4">By country</a>
-                </div>
-                <div class="flex flex-col mt-10 gap-x-6 grow">
-                    @foreach ($countries as $country)
-                        <p>{{ $country['code'] }}</p>
-                    @endforeach
-                   
-                </div>
-            </div>
-        </div>
+<x-landing-layout>
+    <h1 class="font-extrabold text-2xl">Worldwide statistics</h1>
+    <div class="mt-10">
+        <a href="{{ route('landing.stats') }}">Worldwide</a>
+        <a href="" class="ml-20 font-bold border-b-4 border-black pb-4">By country</a>
     </div>
-</x-layout>
+    <div class="flex flex-col mt-10 mb-14 overflow-y-scroll gap-x-6 basis-auto max-h-[65vh] rounded-3xl border-[#f6f6f7] border-2">
+        <div class="flex font-semibold pl-10 pt-5 pb-5 bg-[#f6f6f7] text-sm">
+            <p class="basis-0 grow">Location</p>
+            <p class="basis-0 grow">New cases</p>
+            <p class="basis-0 grow">Deaths</p>
+            <p class="basis-0 grow-[2]">Recovered</p>
+        </div>
+        @foreach ($countries as $country)
+        <div class="flex pl-10 pt-4 pb-4 border-[#F6F6F7] border-b-2">
+            <p class="basis-0 grow">{{ $country['code'] }}</p>
+            <p class="basis-0 grow">{{ $country['confirmed'] }}</p>
+            <p class="basis-0 grow">{{ $country['recovered'] }}</p>
+            <p class="basis-0 grow-[2]">{{ $country['death'] }}</p>
+        </div>
+        @endforeach
+    </div>
+</x-landing-layout>

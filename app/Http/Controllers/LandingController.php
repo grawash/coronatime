@@ -2,18 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Stats;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
-
 
 class LandingController extends Controller
 {
-    public function stats():View
-    {
-        $response = Http::get('https://devtest.ge/countries')->json();
-        return view('countries', [
-				'countries' => $response
-			]);
-    }
+	public function index(): View
+	{
+		$countries = Stats::all();
+		$confirmed = 0;
+		$recovered = 0;
+		$deaths = 0;
+		foreach ($countries as $country)
+		{
+			$confirmed += $country->confirmed;
+			$recovered += $country->recovered;
+			$deaths += $country->death;
+		}
+		return view('landing', [
+			'confirmed' => $confirmed,
+			'recovered' => $recovered,
+			'deaths'    => $deaths,
+		]);
+	}
+
+	public function stats(): View
+	{
+		return view('countries', [
+			'countries' => Stats::all(),
+		]);
+	}
 }
