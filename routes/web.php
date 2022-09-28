@@ -18,8 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [LandingController::class, 'index'])->middleware('auth', 'verified')->name('landing.stats');
-Route::get('countries-statistics', [LandingController::class, 'stats'])->middleware('auth')->name('countries.stats');
+Route::controller(LandingController::class)->group(function () {
+	Route::get('/', 'index')->middleware('auth', 'verified')->name('landing.stats');
+	Route::get('countries-statistics', 'stats')->middleware('auth')->name('countries.stats');
+});
 
 Route::controller(RegisterController::class)->group(function () {
 	Route::get('register', 'index')->middleware('guest')->name('register.index');
