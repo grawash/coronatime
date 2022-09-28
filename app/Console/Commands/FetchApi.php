@@ -6,14 +6,14 @@ use App\Models\Statistic;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Console\Command;
 
-class FetchCountriesStatistic extends Command
+class FetchApi extends Command
 {
 	/**
 	 * The name and signature of the console command.
 	 *
 	 * @var string
 	 */
-	protected $signature = 'FetchCountriesStatistic';
+	protected $signature = 'fetch:api';
 
 	/**
 	 * The console command description.

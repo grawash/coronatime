@@ -4,6 +4,7 @@ use App\Http\Controllers\DisplayStatisticController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(DisplayStatisticController::class)->group(function () {
+Route::controller(StatisticController::class)->group(function () {
 	Route::get('/', 'index')->middleware('auth', 'verified')->name('landing.stats');
 	Route::get('countries-statistics', 'stats')->middleware('auth')->name('countries.stats');
 });
