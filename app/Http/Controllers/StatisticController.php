@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SortingRequest;
 use App\Models\Statistic;
 use Illuminate\Contracts\View\View;
 
@@ -16,10 +17,10 @@ class StatisticController extends Controller
 		]);
 	}
 
-	public function stats(): View
+	public function stats(SortingRequest $request): View
 	{
-		$sort = request('sort', 'asc');
-		$sortBy = request('sortBy', 'confirmed');
+		$sort = $request->query('sort', 'asc');
+		$sortBy = $request->query('sortBy', 'country->en');
 		$countries = Statistic::orderBy($sortBy, $sort)->get();
 		if (request('search'))
 		{
