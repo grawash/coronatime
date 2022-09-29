@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Statistic;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\DB;
 
 class StatisticController extends Controller
 {
@@ -19,8 +18,9 @@ class StatisticController extends Controller
 
 	public function stats(): View
 	{
-		//$countries = DB::table('statistics')->get();
-		$countries = Statistic::all();
+		$sort = request('sort', 'asc');
+		$sortBy = request('sortBy', 'confirmed');
+		$countries = Statistic::orderBy($sortBy, $sort)->get();
 		if (request('search'))
 		{
 			$countries = Statistic::whereRaw('LOWER(country->"$.en") like ?', '%' . strtolower(request('search')) . '%')->get();
