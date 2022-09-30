@@ -4,22 +4,7 @@
             <div class="flex items-center h-full pl-28 pr-28">
                 <img src="./images/Group 1.svg" alt="">
                 <div class="flex ml-auto">
-                    <div x-data="{ show:false }" @click.away="show = false" class="bg-white">
-                        <button @click="show = ! show" >{{__('landing.select')}}</button>
-
-                        <div x-show="show" style="display: none;" class="absolute bg-white border-neutral-200 border rounded-xl pt-2 pb-2 mr-10 mt-2">
-                            <form method="POST" action="/locale"  class="p-2 hover:bg-neutral-300">
-                                @csrf
-                                <input type="hidden" name="language" value="en">
-                                <button type="submit" >English</button>
-                            </form>
-                            <form method="POST" action="/locale" class="p-2 hover:bg-neutral-300">
-                                @csrf
-                                <input type="hidden" name="language" value="ka">
-                                <button type="submit" >Georgian</button>
-                            </form>
-                        </div>
-                    </div>
+                    <x-select-language/>
                     <p class="ml-12">{{ auth()->user()->username }}</p>
                     <form id="logout-form" method="POST" action="{{ route('logout') }}">
                         @csrf
