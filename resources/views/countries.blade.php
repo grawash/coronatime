@@ -34,7 +34,7 @@
         </div>
         @foreach ($countries as $country)
         <div class="flex pl-10 pt-4 pb-4 border-[#F6F6F7] border-b-2">
-            <p class="basis-0 grow">{{ $country->code }}</p>
+            <p class="basis-0 grow">{{ $country->country }}</p>
             <p class="basis-0 grow">{{ $country->confirmed }}</p>
             <p class="basis-0 grow">{{ $country->death }}</p>
             <p class="basis-0 grow-[2]">{{ $country->recovered }}</p>

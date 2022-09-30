@@ -36,7 +36,7 @@ class FetchApi extends Command
 				'code' => $country['code'],
 			])->json();
 			Statistic::create([
-				'country'   => json_encode($country['name']),
+				'country'   => $country['name'],
 				'code'      => $statistics['code'],
 				'confirmed' => $statistics['confirmed'],
 				'recovered' => $statistics['recovered'],
