@@ -1,8 +1,8 @@
 <x-user-layout>
                 <form method="POST" action="{{ route('user.register') }}" class="mt-16">
                     @csrf
-                    <h1 class="text-2xl font-[1000]">{{__('register.welcome_register')}}</h1>
-                    <p class="text-neutral-600 text-xl mt-4">{{__('register.register_text')}}</p>
+                    <h1 class="text-xl lg:text-2xl font-[1000]">{{__('register.welcome_register')}}</h1>
+                    <p class="text-neutral-600 text-base lg:text-xl mt-4">{{__('register.register_text')}}</p>
                     <x-form.input name="username" placeholder="{{__('register.username_placeholder')}}" required />
                     <x-form.input name="email" type="email" placeholder="{{__('register.email_placeholder')}}" required />
                     <x-form.input name="password" type="password" placeholder="{{__('register.password_placeholder')}}" required />
