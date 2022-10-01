@@ -10,6 +10,8 @@
 
                     <button type="submit" class="bg-green-500 capitalize hover:bg-green-600 mt-6 w-full h-14 text-white text-base font-[900] rounded-md">{{__('signup')}}</button>
 
-
+                    <div class="flex mt-6 items-center justify-center">
+                        <p class="text-base text-neutral-600">{{ __('register.have_account') }}<a href="{{ route('login') }}" class="font-semibold text-black">{{__('register.login') }}</a></p>
+                    </div>
                 </form>
 </x-user-layout>
