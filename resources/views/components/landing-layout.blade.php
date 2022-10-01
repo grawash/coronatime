@@ -4,11 +4,11 @@
             <div class="flex items-center h-full pl-28 pr-28">
                 <img src="./images/Group 1.svg" alt="">
                 <div class="flex ml-auto">
-                    <button>select</button>
-                    <p class="ml-4">{{ auth()->user()->username }}</p>
+                    <x-select-language/>
+                    <p class="ml-12">{{ auth()->user()->username }}</p>
                     <form id="logout-form" method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" class="border-l pl-2 ml-2">Log out</button>
+                        <button type="submit" class="border-l pl-2 ml-2">{{__('landing.logout')}}</button>
                     </form>
                 </div>
             </div>

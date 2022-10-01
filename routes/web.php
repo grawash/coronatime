@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetPasswordController;
@@ -22,6 +23,7 @@ Route::controller(StatisticController::class)->group(function () {
 	Route::get('/', 'index')->middleware('auth', 'verified')->name('landing.stats');
 	Route::get('countries-statistics', 'stats')->middleware('auth')->name('countries.stats');
 });
+Route::post('locale', [LanguageController::class, 'change'])->name('locale.change');
 
 Route::controller(RegisterController::class)->group(function () {
 	Route::get('register', 'index')->middleware('guest')->name('register.index');
