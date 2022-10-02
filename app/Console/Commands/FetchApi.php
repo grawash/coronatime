@@ -29,6 +29,7 @@ class FetchApi extends Command
 	 */
 	public function handle()
 	{
+		Statistic::truncate();
 		$countries = Http::get('https://devtest.ge/countries')->json();
 		foreach ($countries as $country)
 		{

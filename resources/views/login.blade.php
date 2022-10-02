@@ -6,7 +6,7 @@
         <x-form.input name="username" type="text" placeholder="{{__('login.username_placeholder') }}" required />
         <x-form.input name="password" type="password" placeholder="{{__('login.password_placeholder') }}" required />
         <div class="flex mt-6 items-center">
-            <input type="checkbox" id='remember'>
+            <input type="checkbox" id='remember' name="remember">
             <label for="remember" class="pl-2 font-semibold text-xs md:text-sm">{{__('login.remember') }}</label>
             <a href="{{ route('password.request') }}" class="ml-auto text-blue-700 font-semibold text-xs md:text-sm">{{__('login.forgot_password') }}</a>
         </div>

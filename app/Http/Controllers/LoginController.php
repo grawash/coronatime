@@ -16,9 +16,10 @@ class LoginController extends Controller
 
 	public function login(LoginPostRequest $request): RedirectResponse
 	{
+		$remember = ($request->remember == 'on') ? true : false;
 		$fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 		$request->merge([$fieldType => $request->username]);
-		if (auth()->attempt([$fieldType => $request->$fieldType, 'password' => $request->password]))
+		if (auth()->attempt([$fieldType => $request->$fieldType, 'password' => $request->password], $remember))
 		{
 			session()->regenerate();
 			return redirect()->route('landing.stats');
