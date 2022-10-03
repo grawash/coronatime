@@ -22,9 +22,24 @@ class StatisticTest extends TestCase
 		$response->assertRedirect(route('login'));
 	}
 
-	public function test_visit_landing_successfully()
+	public function test_visit_landing_page_successfully()
 	{
 		$resoponse = $this->actingAs($this->user)->get(route('landing.stats'));
 		$resoponse->assertSuccessful();
 	}
+
+	public function test_visit_statistics_page_successfully()
+	{
+		$resoponse = $this->actingAs($this->user)->get(route('countries.stats'));
+		$resoponse->assertSuccessful();
+	}
+
+	// public function test_statistics_page_should_return_corresponding_data_when_searching()
+	// {
+	// 	$resoponse = $this->actingAs($this->user)->get(route('countries.stats'), [
+	// 		'search' => 'georgia',
+	// 	]);
+	// 	$resoponse->assertSee('Georgia');
+	// 	$resoponse->assertSuccessful();
+	// }
 }
