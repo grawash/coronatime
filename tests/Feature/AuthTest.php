@@ -96,10 +96,10 @@ class AuthTest extends TestCase
 	public function test_auth_should_redirect_to_login_if_user_logs_out()
 	{
 		$user = User::factory()->create();
-		$this->be($user); // login your user in system
+		$this->be($user);
 
 		$this->post(route('logout'))
-			->assertRedirect(route('login')); // redirect to login,
-		$this->assertGuest(); // check that your user not auth more
+			->assertRedirect(route('login'));
+		$this->assertGuest();
 	}
 }
