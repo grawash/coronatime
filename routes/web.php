@@ -37,7 +37,7 @@ Route::controller(LoginController::class)->group(function () {
 });
 
 Route::controller(VerificationController::class)->group(function () {
-	Route::get('/email/verify', 'index')->middleware('auth')->name('verification.notice');
+	Route::get('/email/verify', 'index')->middleware('auth', 'NotVerified')->name('verification.notice');
 	Route::get('/verified', 'verified')->middleware('guest')->name('verified.notice');
 	Route::get('/email/verify/{id}/{hash}', 'verify')->name('verification.verify');
 });

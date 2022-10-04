@@ -52,16 +52,16 @@ class ResetPassword extends Notification
 					->view('email.reset', ['url' => $url]);
 	}
 
-	/**
+	/*
 	 * Get the array representation of the notification.
 	 *
 	 * @param mixed $notifiable
 	 *
 	 * @return array
 	 */
-	public function toArray($notifiable)
-	{
-		return [
-		];
-	}
+	// public function toArray($notifiable)
+	// {
+	// 	return [
+	// 	];
+	// }
 }

@@ -19,7 +19,7 @@ class RegistrationTest extends TestCase
 		$response->assertSuccessful();
 	}
 
-	public function test_register_should_redirect_to_verify_if_successfully()
+	public function test_register_should_redirect_to_verify_if_successful()
 	{
 		$user = array_merge(
 			User::factory()->make()->toArray(),

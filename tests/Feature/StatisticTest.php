@@ -12,7 +12,7 @@ class StatisticTest extends TestCase
 	protected function setUp(): void
 	{
 		parent::setUp();
-		$this->user = User::factory()->create();
+		$this->user = User::factory()->create(['email_verified_at' => now()]);
 	}
 
 	public function test_landing_should_redirect_to_login_if_not_authorized()
@@ -34,12 +34,12 @@ class StatisticTest extends TestCase
 		$response->assertSuccessful();
 	}
 
-	// public function test_statistics_page_should_return_corresponding_data_when_searching()
-	// {
-	// 	$response = $this->actingAs($this->user)->get(route('countries.stats'), [
-	// 		'search' => 'georgia',
-	// 	]);
-	// 	$response->assertSee('Georgia');
-	// 	$response->assertSuccessful();
-	// }
+	public function test_statistics_page_should_return_corresponding_data_when_searching()
+	{
+		$response = $this->actingAs($this->user)->get(route('countries.stats'), [
+			'search' => 'georgia',
+		]);
+		$response->assertSee('Georgia');
+		$response->assertSuccessful();
+	}
 }
