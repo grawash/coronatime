@@ -47,6 +47,7 @@ class VerificationTest extends TestCase
 			->assertSuccessful(200);
 	}
 
+	// ამას რატომღაც არ ტესტავს, app/Providers/AuthServiceProvider.php _ში მაქვს დაწერილი მეილზე რას აგზავნის ეგ ლოგიკა და მაგიტო მგონია.
 	// public function test_confirmation_email_is_sent_upon_registration()
 	// {
 	// 	Notification::fake();

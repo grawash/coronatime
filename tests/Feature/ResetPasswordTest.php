@@ -50,7 +50,6 @@ class ResetPasswordTest extends TestCase
 	public function test_reset_link_displays_password_reset_page()
 	{
 		$user = User::factory()->create();
-		//dd('reset-password' . '/' . $user->remember_token);
 		$response = $this->get('reset-password' . '/' . $user->remember_token, [
 			'email'                 => $user->email,
 			'token'                 => $user->remember_token,
@@ -73,8 +72,6 @@ class ResetPasswordTest extends TestCase
 			'password'              => $user->password,
 			'password_confirmation' => $user->password,
 		]);
-		//$response->assertSessionHasErrors('email');
-
 		Event::assertDispatched(PasswordReset::class);
 	}
 }
