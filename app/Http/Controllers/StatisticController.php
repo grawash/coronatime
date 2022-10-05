@@ -21,11 +21,7 @@ class StatisticController extends Controller
 	{
 		$sort = $request->query('sort', 'asc');
 		$sortBy = $request->query('sortBy', 'country->en');
-		$countries = Statistic::orderBy($sortBy, $sort)->get();
-		if (request('search'))
-		{
-			$countries = Statistic::whereRaw('LOWER(country->"$.en") like ?', '%' . strtolower(request('search')) . '%')->get();
-		}
+		$countries = request('search') ? $countries = Statistic::whereRaw('LOWER(country->"$.en") like ?', '%' . strtolower(request('search')) . '%')->get() : Statistic::orderBy($sortBy, $sort)->get();
 		return view('countries', [
 			'countries' => $countries,
 		]);

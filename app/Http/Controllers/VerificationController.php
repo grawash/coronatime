@@ -28,6 +28,7 @@ class VerificationController extends Controller
 
 		if (!hash_equals((string) $request->route('hash'), sha1($user->getEmailForVerification())))
 		{
+			// dd('it should work');
 			throw new AuthorizationException();
 		}
 
