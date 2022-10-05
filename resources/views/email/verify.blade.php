@@ -1,5 +1,5 @@
 <x-mail-layout>
-    <img id="img" src="{{ $message->embed(public_path() . '/images/Landing (Worldwide) 2(3).png') }}" alt="Coronatime">
+    <img id="img" src="https://lh3.googleusercontent.com/23Sn3P-geOLJNTLU7W_pI_trdIugaIePgX39YO8ukqyjJsSWY4k8C4iCGn4B8_hZyBIik7TVLNezJvqch3sUXZzy6y-rw5vzoUgFiJlSqKdctmqfYt2FG-0vUoYFurGYDrBFbq7r6UpW6UOhAnpny31u5qIhnZYt1_xM5-4gekGyFixhgz9LS1u0cKwwnNFrDcCFQ6M3I3rcDrjsf0PEIpX0vyTevW_pnaSSgDtANyzo5JLOqF_0XCIdX9VbDF0KHr0QbWNJfNhV7zSYVDJcffxAEks8A3Z2qDQWezN9bOPR3uR8dd3aMAivBBsK0vgnF__ID4HLiigwGinY2WAkE-e4v0byyqAajrW7RGsi4gexEyMwk6pfcAkKcBuyQOX09O1Aa7TC9aYc6_Rd0iSo0tBrrKlfAqObmJyi9VLktao0bbc8o62fzB9MTxwRxlcJMShLr5nuhcRzDxcy9ILtsIk8IUsd4g06_rVN6lNozy3pcKZ9Nd_QoWkWkBVRXsY-dKG5GnMmPpj_05fDpoeh7Ckr2xSIg4r0CSP2DUhd2ZGqJY1uGBlouVfc6EYSb6eAhOGX9Ar0rtKvrd_pRUyEWPlkBd-IKRwYxubwJeb3h64Lt3lwvspvWISpBp9O1350vfxclgemGX_fm4MOeyHhIkTe62ld6a2VJ3G1xO-hX_zYhs8Ip0w3aMLycjb_WfjD66-DhOT-PYI8HSVSzrQesBfRFPp-72mwYc0eo-cBANcj1gKzhyW7qHhxFtVSMCrz4PEm77X4tYqV4f8D7_A04x8fot4jgp3QbFImY9Tsy7U-uiR9gc3Q7RONhQ3O-Z_N6APeYll0R83YofZHhATbkWxnI06FTqOl2ZJKCybw-kbvKd-bV5saicawJtOpGHNwzS8l8pi6dKW_YysxAHAb22SaJGNAxPoBdeuqbi8=w1040-h730-no?authuser=0" alt="Coronatime">
     <h1 id="heading">Confirmation email</h1>
     <p id="text">click this button to verify your email</p>
     <a id="verifyBtn" href="{{ $url }}">VERIFY EMAIL</a>

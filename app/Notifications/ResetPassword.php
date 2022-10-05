@@ -49,7 +49,7 @@ class ResetPassword extends Notification
 		], false));
 		return (new MailMessage)
 					->line('The introduction to the notification.')
-					->view('email.reset', ['url' => $url]);
+					->markdown('email.reset', ['url' => $url]);
 	}
 
 	/*

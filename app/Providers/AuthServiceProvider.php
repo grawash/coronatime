@@ -31,7 +31,7 @@ class AuthServiceProvider extends ServiceProvider
 		VerifyEmail::toMailUsing(function ($notifiable, $url) {
 			return (new MailMessage)
 				->subject('Verify Email Address')
-				->view('email.verify', ['url' => $url]);
+				->markdown('email.verify', ['url' => $url]);
 		});
 	}
 }
